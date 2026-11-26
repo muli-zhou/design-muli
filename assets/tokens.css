@@ -1,0 +1,111 @@
+/* design-muli default tokens, v0.4.0.
+   A neutral default for products with no anchor of their own.
+   Replace with the project's design system or brand values whenever they exist.
+   What each token is for: references/tokens.md */
+
+:root {
+  color-scheme: light dark;
+
+  /* Neutral scale: each step has one role */
+  --page:        #ffffff;  /* page background */
+  --fill:        #f5f5f6;  /* subtle fill: whole-item tap targets, input wells, table header */
+  --fill-hover:  #ececee;  /* hover and pressed fill */
+  --hairline:    #e5e5e8;  /* 1px separators between levels */
+  --border:      #cdcdd2;  /* strong border: inputs, secondary buttons */
+  --text-3:      #8b8b92;  /* tertiary text: captions, placeholders, disabled */
+  --text-2:      #5e5e66;  /* secondary text: labels, metadata */
+  --ink:         #18181b;  /* primary text and icons */
+
+  /* One accent. Replace with the brand colour; if there is none, use ink as the accent:
+     --accent: var(--ink); --on-accent: var(--page); */
+  --accent:      #2457c5;
+  --accent-hover:#1d4aa9;
+  --on-accent:   #ffffff;
+
+  /* Status: text and icon colour, not fills */
+  --ok:          #1d7a3e;
+  --warn:        #9a5a00;
+  --bad:         #bf3a30;
+
+  /* Type */
+  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, "PingFang SC", monospace;
+  --fs-12: 12px; --lh-12: 16px;   /* captions, footnotes */
+  --fs-14: 14px; --lh-14: 20px;   /* secondary text, table cells, labels */
+  --fs-16: 16px; --lh-16: 24px;   /* body; inputs on touch */
+  --fs-20: 20px; --lh-20: 28px;   /* section and card titles */
+  --fs-28: 28px; --lh-28: 36px;   /* page title */
+  --fs-40: 40px; --lh-40: 48px;   /* display: one per screen at most */
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600;
+
+  /* Space: 4px grid */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-12: 48px;
+
+  /* Shape: inner radius = outer radius - padding */
+  --r-sm: 6px;   /* controls, inputs, tags */
+  --r-md: 8px;   /* panels, menus, dialogs, images */
+  --r-round: 999px; /* only for avatars, switch tracks and knobs */
+
+  /* Elevation: none in flow; one layered shadow for floating surfaces */
+  --shadow-float: 0 0 0 1px rgb(0 0 0 / .06), 0 2px 4px rgb(0 0 0 / .05), 0 12px 32px rgb(0 0 0 / .10);
+
+  /* Controls */
+  --h-sm: 32px; --h-md: 36px; --h-lg: 40px; --h-touch: 44px;
+
+  /* Motion: easing by role, duration by tier (references/motion.md) */
+  --ease-out:          cubic-bezier(.2, .8, .2, 1);   /* enter, press and hover feedback */
+  --ease-in:           cubic-bezier(.4, 0, 1, 1);     /* exit; shorter than the entrance */
+  --ease-in-out:       cubic-bezier(.45, 0, .25, 1);  /* move or resize on screen */
+  --ease-spring-small: cubic-bezier(.3, 1.4, .5, 1);  /* ticks, switch knobs, badges; up to ~64px only */
+  --ease: var(--ease-out);                            /* kept for compatibility */
+  --dur-1: 100ms;  /* hover, press */
+  --dur-2: 150ms;  /* small state changes, release, small exits */
+  --dur-3: 250ms;  /* small entrances, menus, popovers; medium surfaces on desktop */
+  --dur-3m: 300ms; /* medium surfaces on phones: dialogs, popovers with content, drawers */
+  --dur-4: 400ms;  /* sheets, large surfaces on phones */
+  --dur-sheet: var(--dur-4);                          /* kept for compatibility */
+
+  /* Focus */
+  --focus-ring: 0 0 0 2px var(--page), 0 0 0 4px var(--accent);
+}
+
+/* Dark: a full tuned set, not an inversion */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0c0c0d; --fill: #161618; --fill-hover: #1f1f22; --hairline: #27272b; --border: #3c3c42;
+    --text-3: #83838b; --text-2: #a7a7ae; --ink: #ededef;
+    --accent: #6f9bf2; --accent-hover: #8aaff5; --on-accent: #0c0c0d;
+    --ok: #55c27c; --warn: #e0a24a; --bad: #f0776c;
+    --shadow-float: 0 0 0 1px rgb(255 255 255 / .08), 0 2px 4px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0c0c0d; --fill: #161618; --fill-hover: #1f1f22; --hairline: #27272b; --border: #3c3c42;
+  --text-3: #83838b; --text-2: #a7a7ae; --ink: #ededef;
+  --accent: #6f9bf2; --accent-hover: #8aaff5; --on-accent: #0c0c0d;
+  --ok: #55c27c; --warn: #e0a24a; --bad: #f0776c;
+  --shadow-float: 0 0 0 1px rgb(255 255 255 / .08), 0 2px 4px rgb(0 0 0 / .4), 0 12px 32px rgb(0 0 0 / .5);
+}
+
+/* Base */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: var(--fw-regular) var(--fs-16)/var(--lh-16) var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+}
+:lang(zh) { text-autospace: normal; line-height: 1.6; letter-spacing: 0; }
+code, kbd, .mono { font-family: var(--font-mono); text-autospace: no-autospace; }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: var(--dur-2) !important;
+    transition-property: opacity, color, background-color, border-color !important;
+    scroll-behavior: auto !important;
+  }
+}
